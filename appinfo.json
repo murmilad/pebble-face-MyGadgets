@@ -1,0 +1,121 @@
+{
+    "appKeys": {
+        "KEY_FIGURES_SENT": 6,
+        "KEY_FIGURE_COUNT": 4,
+        "KEY_FIGURE_NUMBER": 5,
+        "KEY_GADGET_COMMAND": 2,
+        "KEY_GADGET_COUNT": 10,
+        "KEY_GADGET_NAME": 8,
+        "KEY_GADGET_NUMBER": 9,
+        "KEY_GADGET_STRING": 11,
+        "KEY_GADGET_TIME": 3,
+        "KEY_GADGET_TYPE": 0,
+        "KEY_GADGET_VALUE": 1,
+        "KEY_STATISTICS_COUNT": 7
+    },
+    "capabilities": [
+        "configurable"
+    ],
+    "companyName": "murmilad@gmail.com",
+    "longName": "My gadgets",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/train_frame.png",
+                "name": "IMAGE_DATA_FRAME",
+                "type": "png"
+            },
+            {
+                "file": "images/train_9.png",
+                "name": "IMAGE_TRAIN_8",
+                "type": "png"
+            },
+            {
+                "file": "images/train_8.png",
+                "name": "IMAGE_TRAIN_7",
+                "type": "png"
+            },
+            {
+                "file": "images/train_7.png",
+                "name": "IMAGE_TRAIN_6",
+                "type": "png"
+            },
+            {
+                "file": "images/train_5.png",
+                "name": "IMAGE_TRAIN_5",
+                "type": "png"
+            },
+            {
+                "file": "images/train_4.png",
+                "name": "IMAGE_TRAIN_4",
+                "type": "png"
+            },
+            {
+                "file": "images/train_3.png",
+                "name": "IMAGE_TRAIN_3",
+                "type": "png"
+            },
+            {
+                "file": "images/train_2.png",
+                "name": "IMAGE_TRAIN_2",
+                "type": "png"
+            },
+            {
+                "file": "images/train_10.png",
+                "name": "IMAGE_TRAIN_9",
+                "type": "png"
+            },
+            {
+                "file": "images/train_1.png",
+                "name": "IMAGE_TRAIN_1",
+                "type": "png"
+            },
+            {
+                "file": "images/train.png",
+                "name": "IMAGE_TRAY_CLEAN",
+                "type": "png"
+            },
+            {
+                "file": "images/think_load.png",
+                "name": "IMAGE_TRAY_LOAD",
+                "type": "png"
+            },
+            {
+                "file": "images/think.png",
+                "name": "IMAGE_THINK",
+                "type": "png"
+            },
+            {
+                "file": "images/naked_girl_frame.png",
+                "name": "IMAGE_GIRL_FRAME",
+                "type": "png"
+            },
+            {
+                "file": "images/naked_girl__by_sockes-d4tq8xz.png",
+                "name": "IMAGE_GIRL",
+                "type": "png"
+            },
+            {
+                "file": "images/app_image.png",
+                "menuIcon": true,
+                "name": "IMAGE_APP",
+                "type": "png"
+            },
+            {
+                "characterRegex": "[0-9:. ]",
+                "file": "fonts/BAUHS93.TTF",
+                "name": "FONT_BAUHS21",
+                "type": "font"
+            }
+        ]
+    },
+    "sdkVersion": "2",
+    "shortName": "MG",
+    "uuid": "59e39c9a-f159-4d85-98e5-ac94b5b6fd59",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
