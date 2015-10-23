@@ -70,23 +70,28 @@ void tick_gadget() {
 void update_gadget() {
   
   if (s_figures_received){
-    bitmap_layer_set_bitmap(s_tray_layer, s_tray_bitmap[1]);
+    if (s_figure_count > 0) {
+        bitmap_layer_set_bitmap(s_tray_layer, s_tray_bitmap[1]);
+        
+        static char title_str[512];
     
-    static char title_str[512];
-
-    strcpy(title_str, "");
-
-    for (uint8_t i = 0; i < s_figure_count ; i++){
-      char figure_str[64];
-      snprintf(figure_str, sizeof(figure_str), "%s : %s\n", s_gadgets_array[s_figures_array[i].type].title, s_figures_array[i].string);
-      strcat(title_str, figure_str);
-      APP_LOG(APP_LOG_LEVEL_INFO, " title %s", title_str);
-    }
-
-    APP_LOG(APP_LOG_LEVEL_INFO, " title %s", title_str);
-
-    text_layer_set_text(s_data_text_layer, title_str);
-  } else {
+        strcpy(title_str, "");
+    
+        for (uint8_t i = 0; i < s_figure_count ; i++){
+          char figure_str[64];
+          snprintf(figure_str, sizeof(figure_str), "%s : %s\n", s_gadgets_array[s_figures_array[i].type].title, s_figures_array[i].string);
+          strcat(title_str, figure_str);
+          APP_LOG(APP_LOG_LEVEL_INFO, " title %s", title_str);
+        }
+    
+        APP_LOG(APP_LOG_LEVEL_INFO, " title %s", title_str);
+    
+        text_layer_set_text(s_data_text_layer, title_str);
+      } else {
+        s_figures_received = false;
+        bitmap_layer_set_bitmap(s_tray_layer, s_tray_bitmap[0]);
+      }
+    } else {
     bitmap_layer_set_bitmap(s_tray_layer, s_tray_bitmap[0]);
   }
 }
@@ -145,7 +150,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
      APP_LOG(APP_LOG_LEVEL_INFO, "Key %d",(int) t->key);
     switch(t->key) {
       case KEY_GADGET_COUNT:
-        APP_LOG(APP_LOG_LEVEL_INFO, "Station count %d", t->value->uint8);
+        APP_LOG(APP_LOG_LEVEL_INFO, "Gadget count %d", t->value->uint8);
         s_gadgets_received = false;
 
         free(s_gadgets_array);
@@ -155,7 +160,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       case KEY_FIGURE_COUNT:
         s_figure_count = 0;
         figure_count = t->value->uint8;
-        APP_LOG(APP_LOG_LEVEL_INFO, "Station count %d", t->value->uint8);
+        APP_LOG(APP_LOG_LEVEL_INFO, "Figure count %d", t->value->uint8);
         s_figures_received = false;
 
         free(s_figures_array);
@@ -172,15 +177,15 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
         break;
       case KEY_GADGET_TYPE:
         s_is_figure = true;
-        APP_LOG(APP_LOG_LEVEL_INFO, "Figure value %d", t->value->uint8);
+        APP_LOG(APP_LOG_LEVEL_INFO, "Gadget type %d", t->value->uint8);
         figure.type = t->value->uint8;
         break;
       case KEY_GADGET_VALUE:
-        APP_LOG(APP_LOG_LEVEL_INFO, "Figure value %d", t->value->int16);
+        APP_LOG(APP_LOG_LEVEL_INFO, "Gadget value %d", t->value->int16);
         figure.value = t->value->int16;
         break;
       case KEY_GADGET_NAME:
-        APP_LOG(APP_LOG_LEVEL_INFO, "Gadget %s", t->value->cstring);
+        APP_LOG(APP_LOG_LEVEL_INFO, "Gadget name %s", t->value->cstring);
         snprintf(gadget.title, sizeof(gadget.title), "%s", t->value->cstring);
         break;
       case KEY_GADGET_NUMBER:
@@ -228,6 +233,7 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
   }
 
   if (s_is_figure) {
+    printf("Add Figure: %d", figure.type);
     s_figures_array[figure.type] = figure;
     s_figure_count = figure_count;
 
