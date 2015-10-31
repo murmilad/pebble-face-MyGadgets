@@ -63,8 +63,10 @@ static void send_command(char * command) {
 }
 
 void tick_gadget() {
-  if (s_figures_received){
+  if (s_gadgets_received){
     send_command("send_figures");
+  } else {
+    send_command("send_gadgets");
   }
 }
 

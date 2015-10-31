@@ -44,7 +44,7 @@ static void main_window_load(Window *window) {
   layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(s_background_layer));
 
   // Create time TextLayer
-  s_time_layer = text_layer_create(GRect(83, 0, 58, 25));
+  s_time_layer = text_layer_create(GRect(80, 0, 61, 25));
   text_layer_set_background_color(s_time_layer, GColorBlack);
   text_layer_set_text_color(s_time_layer, GColorClear);
   text_layer_set_text(s_time_layer, "00:00");
