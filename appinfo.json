@@ -22,6 +22,16 @@
     "resources": {
         "media": [
             {
+                "file": "fonts/test.ttf",
+                "name": "FONT_GEORGIA14",
+                "type": "font"
+            },
+            {
+                "file": "fonts/test.ttf",
+                "name": "FONT_GEORGIA21",
+                "type": "font"
+            },
+            {
                 "file": "images/train_frame.png",
                 "name": "IMAGE_DATA_FRAME",
                 "type": "png"

@@ -52,6 +52,7 @@ static bool s_is_figure = false;
 static bool s_is_statistics = false;
 
 static uint8_t s_figure_count = 0;
+static GFont s_data_font;
 
 static void send_command(char * command) {
   DictionaryIterator* dictionaryIterator = NULL;
@@ -113,6 +114,10 @@ void load_gadget(Window *window) {
   s_data_text_layer = text_layer_create(GRect(10, 103, 130, 62));
   text_layer_set_background_color(s_data_text_layer, GColorBlack);
   text_layer_set_text_color(s_data_text_layer, GColorClear);
+
+  s_data_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_GEORGIA14));
+  text_layer_set_font(s_data_text_layer, s_data_font);
+
   layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_data_text_layer));
 }
 
