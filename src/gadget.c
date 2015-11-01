@@ -1,6 +1,8 @@
 #include <pebble.h>
 #include "gadget.h"
 
+#define INTERVAL_MINUTES 3
+
 #define TRAY_IMAGES_COUNT 2
 
 #define KEY_GADGET_TYPE 0
@@ -63,11 +65,19 @@ static void send_command(char * command) {
 }
 
 void tick_gadget() {
-  if (s_gadgets_received){
-    send_command("send_figures");
-  } else {
-    send_command("send_gadgets");
+
+  static uint8_t s_interval_minutes = 0;
+  
+  if (s_interval_minutes == 0 || s_interval_minutes == INTERVAL_MINUTES) {
+    if (s_gadgets_received){
+      send_command("send_figures");
+    } else {
+      send_command("send_gadgets");
+    }
+    s_interval_minutes = 1;
   }
+  
+  s_interval_minutes++;
 }
 
 void update_gadget() {
